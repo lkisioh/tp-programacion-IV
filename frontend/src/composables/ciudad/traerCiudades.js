@@ -14,6 +14,8 @@ export const traerCiudades = ()=> {
     ciudades.value= res.data
   }catch (error){
     console.error(`Error al buscar las ciudades: ${error.message}`)
+  }finally {
+      cargando.value = false
   }
 
 }

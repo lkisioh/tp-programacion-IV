@@ -14,7 +14,10 @@ export const traerAtletas = ()=> {
     atletas.value= res.data
   }catch (error){
     console.error(`Error al buscar las atletas: ${error.message}`)
-  }
+  }finally {
+      cargando.value = false
+    }
+
 
 }
 return{

@@ -2,10 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 //Ciudades
 import CiudadesView from '@/views/CiudadesView.vue'
-import CiudadFormView from '@/views/CiudadFormView.vue'
+import CiudadFormView from '@/views/CiudadView.vue'
 //Atletas
 import AtletasView from '@/views/AtletasView.vue'
-import AtletaFormView from '@/views/AtletaFormView.vue'
+import AtletaFormView from '@/views/AtletaView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,8 +21,13 @@ const router = createRouter({
       component: CiudadesView,
     },
     {
-      path: '/NuevaCiudad',
-      name: 'ciudad-form',
+      path: '/Ciudad',
+      name: 'ciudad-nueva',
+      component: CiudadFormView,
+    },
+    {
+      path: '/Ciudad/:id',
+      name: 'ciudad-editar',
       component: CiudadFormView,
     },
     {
@@ -31,8 +36,13 @@ const router = createRouter({
       component: AtletasView,
     },
     {
-      path: '/NuevoAtleta',
-      name: 'atleta-form',
+      path: '/Atleta',
+      name: 'atleta-nuevo',
+      component: AtletaFormView,
+    },
+    {
+      path: '/Atleta/:id',
+      name: 'atleta-editar',
       component: AtletaFormView,
     }
   ],
