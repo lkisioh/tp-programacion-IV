@@ -49,3 +49,80 @@ async function eliminar(id) {
 
 
 </template>
+
+<style scoped>
+ 
+div {
+  margin: 20px auto;
+  max-width: 900px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+h1 {
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px; 
+  margin-top: 20px;
+}
+
+th {
+  text-align: left;
+  background: #f1f5f9;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #334155;
+}
+
+td {
+  background: #f8fafc;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+
+td a {
+  color: #1d4ed8;
+  font-weight: 500;
+  margin-right: 12px; 
+}
+
+td a:hover {
+  color: #1e40af;
+}
+
+td button {
+  background: #2563eb;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+td button:hover {
+  background: #1e40af;
+}
+
+</style>
