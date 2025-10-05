@@ -22,7 +22,7 @@ const esEdicion = ref(false)
 
 let atleta = ref({
   nombre: '',
-  dni:'',
+  dni: 0,
   tiempo:'',
   ciudadId:''
  })
@@ -51,9 +51,11 @@ onMounted(async () => {
 
 
 async function guardar() {
-  if (esEdicion.value) {
 
-    atleta.value.tiempo = `${horas.value }h ${minutos.value }m ${segundos.value }s`
+  atleta.value.dni = Number(atleta.value.dni)
+  atleta.value.tiempo = `${horas.value }h ${minutos.value }m ${segundos.value }s`
+
+  if (esEdicion.value) {
     editarAtletaApi('http://localhost:3000/Atletas', route.params.id, atleta.value)
   } else {
     guardarAtletaApi('http://localhost:3000/Atletas',atleta.value)
@@ -76,8 +78,10 @@ const segundos = ref('')
     <form @submit.prevent="guardar">
       <label for="nombre">NOMBRE</label>
       <input v-model="atleta.nombre" placeholder="Nombre del Atleta" />
-      <label for="dni">DNI</label>
-      <input v-model="atleta.dni" placeholder="DNI del Atleta" />
+
+      <label v-if="!esEdicion" for="dni">DNI</label>
+      <input v-if="!esEdicion" v-model="atleta.dni" placeholder="DNI del Atleta" />
+
       <b>TIEMPO</b>
       <label for="horas">HORAS</label>
       <input v-model="horas" placeholder="Horas" />
@@ -85,6 +89,7 @@ const segundos = ref('')
       <input v-model="minutos" placeholder="Minutos" />
       <label for="segundos">SEGUNDOS</label>
       <input v-model="segundos" placeholder="Segundos" />
+
       <label for="ciudad">CIUDAD</label>
       <select v-model="atleta.ciudadId" placeholder="Seleccione la ciudad del Atleta">
         <option v-for="ciudad in ciudades" :key="ciudad.id" :value="ciudad.id">{{ ciudad.nombre }}</option>

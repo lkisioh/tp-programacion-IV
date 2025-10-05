@@ -5,19 +5,14 @@ import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
 export class Atleta {
   @PrimaryGeneratedColumn()
   id: number;
-
   @Column()
   dni: number;
-
   @Column()
   nombre: string;
-
   @Column()
-  tiempo: string;
-
+  tiempo: string; 
   @Column()
   posicion: number;
-
   @Column()
   ciudadId: number;  
 }

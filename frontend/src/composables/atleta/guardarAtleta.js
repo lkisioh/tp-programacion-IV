@@ -8,7 +8,6 @@ export function guardarAtleta () {
 
   async function guardarAtletaApi(url,body){
   try{
-
     cargando.value=true
     const res = await axios.post(url,body)
     return res.data

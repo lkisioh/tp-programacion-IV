@@ -8,9 +8,9 @@ export class AtletaController {
   constructor(private readonly atletaService: AtletaService) {}
 
   @Post()
-    create(@Body() createAtletaDto: CreateAtletaDto) : Promise<CreateAtletaDto | null> {
-     return this.atletaService.create(createAtletaDto);
-   }
+  create(@Body() createAtletaDto: CreateAtletaDto): Promise<CreateAtletaDto | null> {
+    return this.atletaService.create(createAtletaDto);
+  }
 
   @Get()
   findAll() {

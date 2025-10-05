@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ciudad } from './entities/ciudad.entity';
 
+
+
 @Injectable()
 export class CiudadService {
   constructor(
@@ -17,14 +19,23 @@ export class CiudadService {
   }
 
   findOne(id: number): Promise<Ciudad | null> {
+     const ciudadExiste = this.ciudadRepo.findOneBy({ id });
+    if (!ciudadExiste)
+      throw new ConflictException(`La ciudad con id: ${id} no existe`);
     return this.ciudadRepo.findOneBy({ id });
   }
 
-  update(id: number, updateCiudadDto: UpdateCiudadDto) {
-    return `This action updates a #${id} ciudad`;
+  update(id: number, updateCiudadDto: UpdateCiudadDto)  {
+    const ciudadExiste = this.ciudadRepo.findOneBy({ id });
+    if (!ciudadExiste)
+      throw new ConflictException('La ciudad no existe');
+    return this.ciudadRepo.update(id, updateCiudadDto),`Se actualizo la ciudad id : ${id}`;
   }
 
   remove(id: number) {
+        const ciudadExiste = this.ciudadRepo.findOneBy({ id });
+    if (!ciudadExiste)
+      throw new ConflictException('La ciudad no existe');
     return this.ciudadRepo.delete(id),`Se elimino la ciudad id : ${id}`;
   }
 
@@ -35,5 +46,6 @@ export class CiudadService {
     const nuevo = this.ciudadRepo.create(ciudad);
     return this.ciudadRepo.save(nuevo);
   }
+
     
 }
